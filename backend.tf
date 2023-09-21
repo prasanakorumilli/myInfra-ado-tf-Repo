@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "my-aws-tf-state-bucket"
-    key = "main"
+    bucket = "kickapoo-tf-state-bucket-test"
+    key = "ado-aws-tf-test"
     region = "us-east-1"
-    dynamodb_table = "my-dynamo-db-table"
+    dynamodb_table = "kickapoo-dyamodb-table-tf-test"
   }
 }
