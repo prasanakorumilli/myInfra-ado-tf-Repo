@@ -2,16 +2,16 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_vpc" "main" {
+resource "aws_vpc" "kickapoo-test" {
   cidr_block = "172.16.0.0/16"
   instance_tenancy = "default"
   tags = {
-    Name = "main"
+    Name = "kickapoo"
   }
 }
 
 #Create security group with firewall rules
-resource "aws_security_group" "jenkins-sg-2022" {
+resource "aws_security_group" "kickapoo-sg-test" {
   name        = var.security_group
   description = "security group for Ec2 instance"
 
@@ -42,20 +42,20 @@ resource "aws_security_group" "jenkins-sg-2022" {
   }
 }
 
-resource "aws_instance" "myFirstInstance" {
+resource "aws_instance" "kickapoo-test-instance" {
   ami           = var.ami_id
   key_name = var.key_name
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.jenkins-sg-2022.id]
+  vpc_security_group_ids = [aws_security_group.kickapoo-sg-test.id]
   tags= {
     Name = var.tag_name
   }
 }
 
 # Create Elastic IP address
-resource "aws_eip" "myFirstInstance" {
+resource "aws_eip" "kickapoo-test-instance" {
   vpc      = true
-  instance = aws_instance.myFirstInstance.id
+  instance = aws_instance.kickapoo-test-instance.id
 tags= {
     Name = "my_elastic_ip"
   }
