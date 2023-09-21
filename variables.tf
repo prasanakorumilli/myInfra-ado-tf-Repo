@@ -23,8 +23,8 @@ variable "tag_name" {
     default     = "kickapoo-test-instance" 
 } 
 variable "ami_id" { 
-    description = "AMI for Ubuntu Ec2 instance" 
-    default     = "ami-0ee23bfc74a881de5" 
+    description = "AMI for Amazon Linux Ec2 instance" 
+    default     = "ami-03a6eaae9938c858c" 
 }
 variable "versioning" {
     type        = bool
